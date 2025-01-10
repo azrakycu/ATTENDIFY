@@ -1,0 +1,101 @@
+/* Main content - Full page area between header and footer */
+.main-content {
+    min-height: calc(100vh - 160px); /* header ve footer yüksekliği kadar alandan çıkar */
+    padding: 40px 20px;
+    background-color: #000000; /* Arka plan rengi */
+}
+
+/* Rehber kısmı */
+.guide-section {
+    text-align: center;
+}
+
+.guide-section h1 {
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    color: var(--main-color);
+    text-align: center;
+}
+
+.guide-section p {
+    font-size: 1.2rem;
+    margin-left: 0; /* Sol margin sıfırla (Varsayılan boşluğu kaldırmak için) */
+    margin-bottom: 20px;
+}
+
+.guide-section img {
+    width: 80%;  /* Resmin genişliğini %80 yap */
+    max-width: 600px;  /* Resmin genişliği en fazla 600px olabilir */
+    height: auto;  /* Yüksekliği orantılı olarak ayarla */
+    display: block;  /* Resmi blok düzene sok (sayfa akışını bozmaz) */
+    margin: 20px auto;  /* Resmin etrafında 20px boşluk bırak, ortala */
+}
+
+/* Timeline Items */
+.timeline-items2 {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column; /* Alt alta hizalamak için */
+    position: relative;
+}
+
+
+/* Timeline Item */
+.timeline-item2 {
+    width: 100%;
+    position: relative;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center; /* Öğeleri yatayda ortalamak için */
+}
+
+/* Timeline Content */
+.timeline-content2 {
+    background-color: var(--bg-color); /* Arka plan rengi */
+    border: 3px solid var(--main-color);
+    padding: 30px 50px;
+    border-radius: 2rem;
+    box-shadow: 0 0 10px var(--main-color);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    width: 80%; /* İçeriğin genişliği */
+    margin-top: 30px; /* Üstten boşluk */
+    text-align: center; /* İçerik ortalanacak şekilde */
+    justify-content: center; /* İçeriği yatayda ortalamak için */
+    align-items: center; /* İçeriği dikeyde ortalamak için */
+    height: 80px; /* Sabit bir yükseklik belirleyebilirsiniz */
+    font-size: medium;
+}
+
+/* Hover efekti */
+.timeline-content2:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--main-color);
+}
+
+/* Başlık stilizasyonu */
+.timeline-content2 h3 {
+    color: var(--text-color); /* Başlık rengi */
+    margin: 0;
+    font-size: 1.7rem; /* Yazıyı büyütme */
+}
+
+/* Duyarlı tasarım (responsive) */
+@media (max-width: 768px) {
+    .timeline-items2 {
+        padding: 20px;
+    }
+
+    .timeline-content2 {
+        width: 90%; /* Küçük ekranlarda daha geniş içerik */
+        padding: 20px;
+    }
+
+    .timeline-dot2 {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+

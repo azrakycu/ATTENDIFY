@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance List</title>
+    <link rel="stylesheet" href="index.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- XLSX kütüphanesini CDN ile dahil et -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+    <!-- jsPDF kütüphanesini CDN ile dahil et -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+ 
+
+<body>
+    <header class="header">
+        <a href="home.html" class="logo"> 
+            <span>Attendify</span>
+        </a>
+        <!-- Menü ikonu -->
+ <i class='bx bx-menu' id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="./home.html">Home</a>
+            <a href="./Loginpage.html" > Log in</a>
+            <a href="./SignUp.html" > Sign Up</a>
+            <a href="./profile.html">Profile</a>
+            <a href="./contactUs.html">Contact Us</a>
+        </nav>
+    </header>
+
+    <section class="attendance-list" id="attendance-list">
+        <div class="header2">
+            <div class="left-content">
+                <h2>Attendance for Class: <span id="classname"></span></h2>
+                <h3>Week: <span id="weeknumber"></span></h3>
+            </div>
+            <button id="cancel-class-button" onclick="cancelClass()">Cancel Class</button>
+        </div>
+        <!-- Canceled message, initially hidden -->
+        <div id="canceled-message" class="canceled-message">
+             <p>Lecture has been canceled for this week.</p>
+        </div>
+        
+        <table id="attendance-table">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Attendance Status</th>
+                </tr>
+            </thead>
+            <tbody id="attendance-body">
+                <!-- Öğrencilerin katılım bilgileri burada listelenecek -->
+            </tbody>
+        </table>
+        <button id="export-button" onclick="exportToExcel()">Download Excel</button>
+        <button id="export-pdf" onclick="exportToPDF()">Download PDF</button>
+    </section>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://www.instagram.com/attendifyweb"><i class='bx bxl-instagram' ></i></a>
+            <a href="http://linkedin.com/in/attendify-web-a1458b342"><i class='bx bxl-linkedin-square' ></i></a>
+            <a href="http://www.youtube.com/@AttendifyWeb"><i class='bx bxl-youtube' ></i></a> 
+        </div>
+
+        <ul class="list">
+            <li>
+                <a href="home.html">Home</a>
+            </li>
+            <li>
+                <a href="SignUp.html">Sign Up</a>
+            </li>
+            <li>
+                <a href="Loginpage.html">Log In</a>
+            </li>
+            <li>
+                <a href="profile.html">Profile</a>
+            </li>
+            <li>
+                <a href="contactUs.html">Contact Us</a>
+            </li>
+        </ul>
+        <p class="copyright">
+            @ Attendify | All Rights Reserved
+        </p>
+    </footer>
+
+    <script>
+      console.log('Script başlıyor...');
+      const urlParams = new URLSearchParams(window.location.search);
+      const classId = urlParams.get('classId');
+      const weekNumber = urlParams.get('weekNumber');
+
+      // DOM elementlerini alıyoruz
+      const classNameElement = document.getElementById('classname');
+      const weekNumberElement = document.getElementById('weeknumber');
+      const attendanceBody = document.getElementById('attendance-body');
+
+      // Ders kodunu SENG209 -> 209 formatına dönüştürüyoruz
+      const courseCode = classId.replace('SENG', '');
+      // classId ve weekNumber'ı sayfada görüntülüyoruz
+      classNameElement.innerText = classId; // Ders ismini dinamik alacağız
+      weekNumberElement.innerText = weekNumber; // Haftayı dinamik alacağız
+
+      console.log('Original Class ID:', classId); // Örnek: SENG209
+      console.log('Converted Course Code:', courseCode); // Örnek: 209
+      console.log('your week number is:', weekNumber); // Örnek: 209
+
+      // API'den katılım bilgilerini alıyoruz
+      fetch('https://peaceful-forest-90255-fbe04ed90482.herokuapp.com/api/attendanceRoutes/attendance', {
+          method: 'POST',  // POST isteği
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              classId: courseCode,  // classId parametresini gönderiyoruz
+              weekNumber: weekNumber  // weekNumber parametresini gönderiyoruz
+          })
+      })
+      .then(response => response.json())
+      .then(data => {
+          // API'den gelen öğrenci verisini listele
+          data.attendance.forEach(student => {
+              const row = document.createElement('tr');
+
+              if (student.attendanceStatus === 'absent') {
+              row.style.backgroundColor = '#121212';  // Yeşil renk
+          } 
+             //else {row.style.backgroundColor = '#f8d7da';}
+
+              row.innerHTML = `
+              <td>${student.studentId}</td>
+              <td>${student.username}</td>
+              <td>${student.surname}</td>
+              <td>${student.attendanceStatus}</td>
+    `;
+              attendanceBody.appendChild(row);
+          });
+      })
+      .catch(error => console.log('Error fetching attendance:', error));
+
+      // Excel İndirme Fonksiyonu
+      function exportToExcel() {
+        const table = document.getElementById('attendance-table');
+        const workbook = XLSX.utils.table_to_book(table, { sheet: "Attendance" });
+
+        // Excel dosyasını indiriyoruz
+        XLSX.writeFile(workbook, "Attendance_List.xlsx");
+      }
+
+      // PDF İndirme Fonksiyonu
+      function exportToPDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Başlıkları ekliyoruz
+        doc.text('Attendance List', 14, 10);
+        doc.text(`Class: ${classId}`, 14, 20);
+        doc.text(`Week: ${weekNumber}`, 14, 30);
+
+        // Tabloyu alıp PDF'e ekliyoruz
+        let table = [];
+        const rows = document.querySelectorAll('#attendance-table tbody tr');
+
+        rows.forEach(row => {
+          let rowData = [];
+          row.querySelectorAll('td').forEach(cell => {
+            rowData.push(cell.innerText);
+          });
+          table.push(rowData);
+        });
+
+        // Tabloyu PDF'e yazıyoruz
+        doc.autoTable({
+          startY: 40, // Tabloyu başlatma yüksekliği
+          head: [['Student ID', 'Student Name', 'Attendance Status']], // Başlıklar
+          body: table, // Veri
+        });
+
+        // PDF dosyasını indiriyoruz
+        doc.save('Attendance_List.pdf');
+      }
+
+    </script>
+
+<script>
+
+    
+    function cancelClass() {
+        // Kullanıcıya onay sorusu
+        const isConfirmed = confirm("Are you sure you want to cancel this class?");
+        
+        if (isConfirmed) {
+            // URL'den sınıf ID'si ve hafta numarasını alıyoruz
+            const urlParams = new URLSearchParams(window.location.search);
+            const classname = urlParams.get('classId');  // Örneğin: 'SENG209'
+            const weeknumber = parseInt(urlParams.get('weekNumber'));  // Örneğin: 4
+
+           // Tabloyu blur yapıyoruz
+        document.getElementById("attendance-table").classList.add("blurred");
+        const canceledMessage = document.getElementById('canceled-message');
+        canceledMessage.style.display = 'block'; // İptal mesajını göster
+        canceledMessage.style.opacity = 1; // Mesajı görünür yap
+
+        // Cancel butonunu devre dışı bırak
+        const cancelButton = document.getElementById('cancel-class-button');
+        cancelButton.disabled = true; // Butonu devre dışı bırak
+
+            
+            // API'ye istek gönderiyoruz
+            fetch('https://peaceful-forest-90255-fbe04ed90482.herokuapp.com/api/isCanceled/cancelClass', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ classname, weeknumber })
+               
+            })
+            
+            .then(response => response.json())
+            .then(data => {
+            if (data.success) {
+                alert(data.message); // Ders iptal işlemi başarılıysa mesaj gösteriyoruz
+                
+            } else {
+                alert(data.message); // Ders iptali başarısızsa mesaj gösteriyoruz
+            }
+        })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("An error occurred. Please try again.");
+            });
+        }
+    }
+    </script>
+    
+    <script>
+      // Hamburger menü kontrolü
+    document.getElementById('menu-icon').addEventListener('click', function () {
+    const navbar = document.querySelector('.navbar');
+    navbar.classList.toggle('show'); // Menüyü aç/kapa
+    });
+    </script>
+    <script src="home.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance List</title>
+    <link rel="stylesheet" href="index.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- XLSX kütüphanesini CDN ile dahil et -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+    <!-- jsPDF kütüphanesini CDN ile dahil et -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <a href="home.html" class="logo">Attendify</a>
+        <nav class="navbar">
+          <a href="./home.html">Home</a>
+          <a href="./Loginpage.html" > Log in</a>
+          <a href="./SignUp.html" > Sign Up</a>
+          <a href="./profile.html">Profile</a>
+          <a href="./contactUs.html">Contact Us</a>
+        </nav>
+    </header>
+
+    <section class="attendance-list" id="attendance-list">
+        <h1><span id="studentname"></span></h1>
+        <h2>Attendance for Class: <span id="classname"></span></h2>
+        
+        <table id="attendance-table">
+            <thead>
+                <tr>
+                    <th>Week</th>
+                    <th>Date</th>
+                    <th>Attendance Status</th>
+                </tr>
+            </thead>
+            <tbody id="attendance-body">
+                <!-- Öğrencilerin katılım bilgileri burada listelenecek -->
+            </tbody>
+        </table>
+        <button id="export-button" onclick="exportToExcel()">Download Excel</button>
+        <button id="export-pdf" onclick="exportToPDF()">Download PDF</button>
+    </section>
+
+    <footer class="footer">
+        <div class="social">
+          <a href="https://www.instagram.com/attendifyweb"><i class='bx bxl-instagram' ></i></a>
+          <a href="http://linkedin.com/in/attendify-web-a1458b342"><i class='bx bxl-linkedin-square' ></i></a>
+          <a href="http://www.youtube.com/@AttendifyWeb"><i class='bx bxl-youtube' ></i></a> 
+        </div>
+
+        <ul class="list">
+          <li>
+              <a href="home.html">Home</a>
+          </li>
+          <li>
+              <a href="SignUp.html">Sign Up</a>
+          </li>
+          <li>
+              <a href="Loginpage.html">Log In</a>
+          </li>
+          <li>
+              <a href="profile.html">Profile</a>
+          </li>
+          <li>
+              <a href="contactUs.html">Contact Us</a>
+          </li>
+      </ul>
+        <p class="copyright">
+            @ Attendify | All Rights Reserved
+        </p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+  // URL'den classId parametresini al
+  const urlParams = new URLSearchParams(window.location.search);
+  const classId = urlParams.get('classId');
+
+  // Class ID'yi sayfada göster
+  const classnameElement = document.getElementById('classname');
+  classnameElement.textContent = classId ? `SENG${classId}` : 'No class selected';
+
+  // Kullanıcının auth token'ını kontrol et
+  const token = localStorage.getItem('authToken');
+  if (!token) {
+    alert('Please log in first.');
+    window.location.href = './Loginpage.html';
+    return;
+  }
+
+  // Kullanıcının profilini alarak studentId'yi öğren
+  let studentId;
+  try {
+    const profileResponse = await fetch('/api/auth/profile', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!profileResponse.ok) {
+      throw new Error('Failed to fetch user profile');
+    }
+
+    const userProfile = await profileResponse.json();
+    console.log('Kullanıcı profili:', userProfile); 
+    studentId = userProfile._id; // Kullanıcının ObjectId'si
+    document.getElementById('studentname').textContent = `${userProfile.username} ${userProfile.surname}`;
+    console.log("studentid",typeof(studentId));
+    console.log("studentid",studentId);
+    
+    
+  } catch (err) {
+    console.error('Error fetching user profile:', err);
+    alert('Error loading profile.');
+    window.location.href = './Loginpage.html';
+    return;
+  }
+
+   // studentId'nin tanımlı olduğundan emin ol
+   if (!studentId) {
+    alert('Öğrenci ID bulunamadı.');
+    return;
+  }
+
+  // İptal edilen hafta numarasını localStorage'dan al
+  const canceledWeek = localStorage.getItem('canceledWeek');
+
+
+
+  // Haftalık katılım verilerini doldur
+  try {
+    console.log("classId",typeof(classId));
+    console.log("classId",classId);
+    console.log("Fetch çağrısında kullanılan studentId:", studentId);
+    console.log("Fetch çağrısında kullanılan classId:", classId);
+    const apiUrl = `https://peaceful-forest-90255-fbe04ed90482.herokuapp.com/api/weeksRoutes/weeks?classId=${classId}&studentId=${studentId}`;
+    console.log("Oluşturulan API URL'si:", apiUrl);
+
+const attendanceResponse = await fetch(apiUrl);
+    if (!attendanceResponse.ok) {
+    throw new Error(`API request failed with status ${attendanceResponse.status}`);
+  }
+    const weeksData = await attendanceResponse.json();
+    console.log('Weeks data:', weeksData);
+
+    
+
+
+    const tbody = document.getElementById('attendance-body');
+    tbody.innerHTML = ''; // Tabloyu temizle
+
+    weeksData.forEach(week => {
+      const row = document.createElement('tr');
+
+      // Haftanın numarası
+      const weekCell = document.createElement('td');
+      weekCell.textContent = `Week ${week.weekNumber}`;
+      row.appendChild(weekCell);
+
+      // Haftanın tarih aralığı
+      const dateCell = document.createElement('td');
+      dateCell.textContent = `${new Date(week.startDate).toLocaleDateString()} - ${new Date(week.endDate).toLocaleDateString()}`;
+      row.appendChild(dateCell);
+
+      // Katılım durumu
+      const statusCell = document.createElement('td');
+      if (canceledWeek && week.weekNumber == canceledWeek) {
+        statusCell.textContent = 'Cancelled'; // Ders iptal edildiyse "Cancelled" yazısı göster
+        //row.style.backgroundColor = '#282727'; // İptal edilen haftayı kırmızı renkte göster
+      } else {
+        statusCell.textContent = week.status; // 'Attended' veya 'Not Attended'
+        // Katılım durumu "Attended" ise satırın rengini yeşil yap
+        if (week.status === 'Attended') {
+          row.style.backgroundColor = '#282727'; 
+        } 
+        //else {row.style.backgroundColor = '#f8d7da'; }
+      }
+      row.appendChild(statusCell);
+
+      tbody.appendChild(row);
+    });
+  } catch (err) {
+    console.error('Error fetching attendance data:', err);
+    alert('Error loading attendance data.');
+  }
+});
+
+    </script>
+       
+</body>
+</html>

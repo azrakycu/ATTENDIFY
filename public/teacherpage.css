@@ -1,0 +1,176 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: black; /* Arka plan rengi */
+  }
+  
+  /* Header */
+  header {
+    background-color: #000000; /* Siyah arka plan */
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center; /* Başlığı ortalamak */
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999; /* Üstte görünmesini sağlamak */
+  }
+  
+  header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 0 0 20px #f3a7f1, 0 0 30px #f3a7f1, 0 0 40px #f3a7f1; /* Işıltılı pembe yazı efekti */
+  }
+  
+  /* Attendance Section */
+  .attendance-status {
+    padding: 20rem 2rem 2rem; /* Yukarıdan daha fazla boşluk ekledim */
+    text-align: center;
+  }
+  
+  .attendance-status h1 {
+    margin-bottom: 3rem; /* "Attendance List" ile tablo arasına boşluk */
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 0 0 20px #f3a7f1, 0 0 30px #f3a7f1, 0 0 40px #f3a7f1; /* Işıltılı pembe yazı efekti */
+  }
+  
+  /* Attendance Table */
+  .attendance-table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 3rem auto; /* Tabloyu aşağı taşımak için ek boşluk */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .attendance-table thead {
+    background-color: #000000;
+    color: white;
+  }
+  
+  .attendance-table th,
+  .attendance-table td {
+    border: 1px solid #f3a7f1; /* Sıcak pembe kenarlık */
+    padding: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    background-color: black; /* Hücre arka planı siyah */
+    color: white; /* Metin rengi beyaz */
+  }
+  
+  .attendance-table th {
+    font-weight: bold;
+  }
+  
+  .attendance-table tbody tr:nth-child(even) {
+    background-color: #1a1a1a; /* Daha koyu gri arka plan */
+  }
+  
+  .attendance-table tbody tr:hover {
+    background-color: #333333; /* Hover durumunda koyu gri */
+  }
+  #excel-btn {
+    margin: 1rem auto; /* Ortalamak için */
+    display: inline-block; /* Butonu ortalamak için */
+    padding: 10px 20px; /* Buton iç boşlukları */
+    font-size: 1rem; /* Yazı boyutu */
+    color: #ffffff; /* Yazı rengini mavi yap */
+    background-color: #1a73e8; /* Mavi arka plan */
+    border: none; /* Kenarlık yok */
+    border-radius: 5px; /* Yuvarlatılmış köşeler */
+    cursor: pointer; /* İmleç şekli */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  #excel-btn:hover {
+    transform: scale(1.05); /* Hover durumunda büyütme */
+    box-shadow: 0 0 10px #1a73e8; /* Hover durumunda parlak mavi ışık efekti */
+    color: white; /* Hover durumunda yazı rengini beyaz yap */
+  }
+  
+  
+  /* Tablet and Mobile Adjustments */
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 1.5rem; /* Başlık boyutunu küçültüyoruz */
+    }
+  
+    .attendance-status {
+      padding: 10rem 2rem 2rem; /* Daha az boşluk */
+    }
+  
+    .attendance-status h1 {
+      font-size: 2rem; /* Başlık boyutunu küçültüyoruz */
+    }
+  
+    .attendance-table {
+      width: 90%; /* Tabloyu daha dar yapıyoruz */
+      margin: 2rem auto; /* Tabloyu ortalamak için margin */
+    }
+  
+    .attendance-table th,
+    .attendance-table td {
+      font-size: 0.9rem; /* Hücrelerdeki yazı boyutunu küçültüyoruz */
+      padding: 0.8rem; /* Hücre padding'ini azaltıyoruz */
+    }
+  
+    .attendance-table thead {
+      font-size: 1.1rem; /* Başlık hücrelerindeki yazı boyutunu büyütüyoruz */
+    }
+  
+    .attendance-table tbody tr:nth-child(even) {
+      background-color: #1a1a1a; /* Daha koyu gri arka plan */
+    }
+  
+    .attendance-table tbody tr:hover {
+      background-color: #333333; /* Hover durumunda koyu gri */
+    }
+  }
+  
+  /* Phone-specific styles */
+  @media (max-width: 480px) {
+    header {
+      padding: 0.8rem 1.5rem; /* Başlık padding'ini daha da küçültüyoruz */
+    }
+  
+    header h1 {
+      font-size: 1.2rem; /* Başlık boyutunu daha da küçültüyoruz */
+    }
+  
+    .attendance-status {
+      padding: 8rem 2rem 2rem; /* Daha az boşluk */
+    }
+  
+    .attendance-status h1 {
+      font-size: 1.8rem; /* Başlık boyutunu küçültüyoruz */
+    }
+  
+    .attendance-table {
+      width: 95%; /* Tabloyu daha da daraltıyoruz */
+      margin: 1.5rem auto; /* Tabloyu daha yakınlaştırıyoruz */
+    }
+  
+    .attendance-table th,
+    .attendance-table td {
+      font-size: 0.8rem; /* Hücre yazı boyutunu daha da küçültüyoruz */
+      padding: 0.6rem; /* Hücre padding'ini daha da azaltıyoruz */
+    }
+  
+    .attendance-table thead {
+      font-size: 1rem; /* Başlık hücre yazı boyutunu biraz küçültüyoruz */
+    }
+  
+    .attendance-table tbody tr:nth-child(even) {
+      background-color: #1a1a1a; /* Daha koyu gri arka plan */
+    }
+  
+    .attendance-table tbody tr:hover {
+      background-color: #333333; /* Hover durumunda koyu gri */
+    }
+  }

@@ -1,0 +1,153 @@
+/* Genel stil */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color:black;
+}
+/* Header */
+.topbar {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 50px;
+  position: relative;
+}
+
+.topbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--main-color);
+  text-transform: uppercase;
+  border-bottom: none; /* Alt çizgiyi kaldırır */
+  text-transform: capitalize; /* İlk harfi büyük yapar */
+  text-shadow: 0 0 25px var(--main-color), 0 0 50px var(--main-color), 0 0 75px var(--main-color);
+}
+
+
+
+#nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+#nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+#nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* BaÅŸlÄ±k */
+h1 {
+  text-align: center;
+  margin-top: 10px; /* BaÅŸlÄ±k ile Ã¼st bar arasÄ±ndaki mesafe */
+  font-size: 2rem;
+  color: white; /* YazÄ± rengini beyaz yap */
+  background-color: black; /* Arka planÄ± siyah yap */
+  padding: 1rem; /* BaÅŸlÄ±k etrafÄ±na padding ekleyelim */
+}
+
+
+/* Ders ProgramÄ± Tablosu */
+.schedule-section {
+  padding: 2rem;
+}
+
+.schedule-table {
+  width: 60%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  box-shadow: 0 0 10px 2px rgba(243, 167, 241, 0.6); /* IÅŸÄ±ltÄ±lÄ± pembe kenarlÄ±k efekti */
+  border: 2px solid #f3a7f1; /* KenarlÄ±k rengi pembe */
+}
+
+.schedule-table thead {
+  background-color: #000000; /* BaÅŸlÄ±k kÄ±smÄ±nÄ±n arka planÄ± siyah */
+  color: white; /* BaÅŸlÄ±k yazÄ±larÄ± beyaz */
+}
+
+.schedule-table th,
+.schedule-table td {
+  border: 1px solid #f3a7f1; /* KenarlÄ±k rengini pembe yap */
+  padding: 1rem;
+  text-align: center;
+  color: white; /* YazÄ±larÄ± beyaz yap */
+  background-color: #000000; /* Arka planÄ± siyah yap */
+}
+
+.schedule-table th {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.schedule-table tbody tr:nth-child(even) {
+  background-color: #000000; /* Ã‡ift sÄ±ralarÄ±n arka planÄ±nÄ± siyah yap */
+}
+
+.schedule-table tbody tr:hover {
+  background-color: #444444; /* Hover (fare ile Ã¼zerine gelindiÄŸinde) arka plan rengi */
+}
+
+/* Footer */
+footer {
+  background-color: #000000;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+footer p {
+  margin: 0;
+}
+@media (max-width: 768px) {
+  
+/* Hamburger Menü İkonu */
+#menu-icon {
+display: block; /* Mobilde görünür */
+font-size: 2rem;
+color: white;
+cursor: pointer;
+align-self: flex-end; /* Sağ tarafa hizala */
+margin-right: 13px;
+background: none; /* Arka planı kaldır */
+border: none; /* Çizgileri kaldır */
+padding: 0; /* İç boşlukları kaldır */
+}
+  
+
+
+  #nav-links {
+    flex-direction: column; /* Linkler dikey sÄ±ralanacak */
+    align-items: center;
+    gap: 1rem;
+  }
+
+  h1 {
+    font-size: 1.8rem; /* BaÅŸlÄ±k boyutunu kÃ¼Ã§Ã¼ltÃ¼yoruz */
+    margin-top: 80px; /* BaÅŸlÄ±k ile Ã¼st bar arasÄ±ndaki mesafeyi ayarlÄ±yoruz */
+  }
+
+  .schedule-table {
+    width: 80%; /* Tabloyu daha geniÅŸ yapÄ±yoruz */
+    font-size: 0.9rem; /* YazÄ± boyutunu biraz kÃ¼Ã§Ã¼ltÃ¼yoruz */
+  }
+
+  .schedule-table th,
+  .schedule-table td {
+    padding: 0.8rem; /* HÃ¼crelerdeki paddingi azaltÄ±yoruz */
+  }
+
+  footer {
+    font-size: 0.9rem; /* Footer yazÄ±sÄ±nÄ± biraz kÃ¼Ã§Ã¼ltÃ¼yoruz */
+    padding: 0.8rem 0;
+  }
+}

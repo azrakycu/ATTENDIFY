@@ -1,0 +1,77 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: black; /* Arka plan rengi */
+  }
+  
+  /* Header */
+  header {
+    background-color: #000000; /* Siyah arka plan */
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center; /* Başlığı ortalamak */
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999; /* Üstte görünmesini sağlamak */
+  }
+  
+  header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 0 0 20px #f3a7f1, 0 0 30px #f3a7f1, 0 0 40px #f3a7f1; /* Işıltılı pembe yazı efekti */
+  }
+  
+  /* Attendance Section */
+  .attendance-status {
+    padding: 20rem 2rem 2rem; /* Yukarıdan daha fazla boşluk ekledim */
+    text-align: center;
+  }
+  
+  .attendance-status h1 {
+    margin-bottom: 3rem; /* "Attendance List" ile tablo arasına boşluk */
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 0 0 20px #f3a7f1, 0 0 30px #f3a7f1, 0 0 40px #f3a7f1; /* Işıltılı pembe yazı efekti */
+  }
+  
+  /* Attendance Table */
+  .attendance-table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 3rem auto; /* Tabloyu aşağı taşımak için ek boşluk */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .attendance-table thead {
+    background-color: #000000;
+    color: white;
+  }
+  
+  .attendance-table th,
+  .attendance-table td {
+    border: 1px solid #f3a7f1; /* Sıcak pembe kenarlık */
+    padding: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    background-color: black; /* Hücre arka planı siyah */
+    color: white; /* Metin rengi beyaz */
+  }
+  
+  .attendance-table th {
+    font-weight: bold;
+  }
+  
+  .attendance-table tbody tr:nth-child(even) {
+    background-color: #1a1a1a; /* Daha koyu gri arka plan */
+  }
+  
+  .attendance-table tbody tr:hover {
+    background-color: #333333; /* Hover durumunda koyu gri */
+  }

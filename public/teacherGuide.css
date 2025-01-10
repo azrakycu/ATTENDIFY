@@ -1,0 +1,11 @@
+/* teacherGuide.html sayfası için genel arka planı siyah yapmak */
+body {
+    background-color: #000; /* Siyah arka plan */
+    color: #fff; /* Yazı rengini beyaz yapmak (siyah arka planda okunabilirlik için) */
+}
+
+/* Eğer sadece belirli bir alanın arka planını siyah yapmak istiyorsanız */
+.page-background {
+    background-color: #000; /* Siyah arka plan */
+    color: #fff; /* Beyaz yazı rengi */
+}

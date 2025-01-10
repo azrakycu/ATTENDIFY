@@ -1,0 +1,328 @@
+.logpage .LogPage form .btngroup button {
+    font-size: 21px; /* YazÄ± boyutunu artÄ±rdÄ±k */
+    width: 140px; /* Buton geniÅŸliÄŸini bÃ¼yÃ¼ttÃ¼k */
+    color: rgb(0, 0, 0);
+    background-color: rgb(245, 246, 246);
+    border: none;
+    outline: none;
+    border-radius: 5px; /* Daha az oval hale getirmek iÃ§in */
+    padding: 10px 25px; /* Butonu bÃ¼yÃ¼tmek iÃ§in padding artÄ±rÄ±ldÄ± */
+    box-shadow: 0px 0px 5px rgb(255, 255, 255), 0px 0px 10px rgb(254, 191, 255), 0px 0px 15px rgb(255, 118, 239);
+    transition: all 0.3s ease; /* Hover efektlerinde yumuÅŸak geÃ§iÅŸ iÃ§in */
+    /* Butonu sağa ve aşağıya kaydırmak için */
+    position: relative;
+    right: 0px;  /* Butonu sağa kaydırır */
+    bottom: -10px; /* Butonu aşağıya kaydırır */
+}
+    label {
+        font-size: 16px;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    select {
+        padding: 5px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 120px; /* Genişliği buradan ayarlayabilirsiniz */
+        text-align: left; /* Sol hizalama için */
+    }
+
+    /* Sağ ve sol ayarı */
+    .center-container {
+        display: flex;
+        justify-content: center; /* Ortada hizalama için */
+        align-items: center; /* Dikeyde ortalama için */
+        margin: 20px;
+    }
+
+
+.logpage{
+    position:relative;
+    background-color: black;
+
+
+}
+
+.LogPage img{
+    width: 100%;
+    height:calc(100vh - 30px);
+    object-fit: cover;
+}
+
+.LogPage form{
+    position: absolute;
+    background-color: rgba(1, 8, 16, 0.853);
+    width: 350px; 
+    left:calc((100% - 350px)/2);
+    top: 100px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px rgb(68, 71, 71), 0px 0px 10px rgb(49, 52, 52), 0px 0px 15px black;
+
+
+}
+.LogPage form .formgroup{
+    background-color: rgba(1, 5, 8, 0.665);
+    margin-bottom: 30px;
+    position: relative;
+    font-size: 1.1rem; /* Increase the font size */
+}
+
+.LogPage form .formgroup input{
+    width: 100%;
+    height: 40px;
+    background-color: #f3a7f1;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    color: white;
+
+}
+.LogPage form .formgroup span{
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    color:rgb(0, 0, 0);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    transition: all 0.5s;
+    padding: 3.9px 7px ;
+    border-radius: 5px;
+}
+.logpage .LogPage form .formgroup input:focus ~ span,
+.LogPage form .formgroup input:valid ~ span {
+    top: -10px;
+    left: 15px;
+    font-size: 0.9rem;
+    background-color: rgb(255, 255, 255);
+}
+
+.LogPage form .btngroup{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    transition: all 0.3s;
+}
+.LogPage form .btngroup a{
+    color: white;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-bottom: 1px solid transparent;
+    align-self: flex-end;
+}
+
+.logpage .LogPage form .btngroup button {
+    font-size: 21px; /* YazÄ± boyutunu artÄ±rdÄ±k */
+    width: 270px; /* Buton geniÅŸliÄŸini bÃ¼yÃ¼ttÃ¼k */
+    color: rgb(0, 0, 0);
+    background-color: rgb(234, 239, 240);
+    border: none;
+    outline: none;
+    border-radius: 25px; /* Daha az oval hale getirmek iÃ§in */
+    padding: 10px 25px; /* Butonu bÃ¼yÃ¼tmek iÃ§in padding artÄ±rÄ±ldÄ± */
+    box-shadow: 0px 0px 5px rgb(255, 255, 255), 0px 0px 10px rgb(254, 191, 255), 0px 0px 15px rgb(255, 118, 239);
+    transition: all 0.3s ease; /* Hover efektlerinde yumuÅŸak geÃ§iÅŸ iÃ§in */
+    /* Butonu sağa ve aşağıya kaydırmak için */
+    position: relative;
+    right: 0px;  /* Butonu sağa kaydırır */
+    bottom: -10px; /* Butonu aşağıya kaydırır */
+}
+
+/* Style for the select dropdown */
+.logpage select {
+    width: 100%;
+    height: 40px;
+    background-color: #f9f9f9; /* Matching background color */
+    border: none;
+    outline: none;
+    border-radius: 50px; /* Rounded corners */
+    padding: 0 10px; /* Padding inside the select */
+    font-size: 1.3rem; /* Font size for better readability */
+    color: rgb(0, 0, 0); /* Text color */
+    transition: all 0.3s ease; /* Smooth transition on focus */
+}
+
+/* Style for select dropdown on focus */
+.logpage select:focus {
+    background-color: rgb(243, 218, 243); /* Lighter background on focus */
+    box-shadow: 0px 0px 5px rgb(254, 191, 255), 0px 0px 10px rgb(255, 118, 239); /* Soft glow on focus */
+}
+
+/* Optional: style the label to match the design */
+.logpage label {
+    font-size: 1rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(57, 60, 61);
+    margin-bottom: 10px;
+    display: block;
+}
+/* Mobilde navbar'Ã„Â± gizlemek iÃƒÂ§in baÃ…Å¸langÃ„Â±ÃƒÂ§ */
+.navbar {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar.active {
+    display: block;
+    position: absolute;
+    top: 80px; /* Hamburger menÃƒÂ¼sÃƒÂ¼nÃƒÂ¼n altÃ„Â±nda navbar'Ã„Â± yerleÃ…Å¸tirmek iÃƒÂ§in */
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    text-align: center;
+    padding: 20px 0;
+}
+
+.navbar a {
+    display: block; /* Her bir ÃƒÂ¶Ã„Å¸eyi blok yapalÃ„Â±m, bÃƒÂ¶ylece alt alta gelirler */
+    padding: 10px;
+    font-size: 1.2rem;
+}
+
+/* Hamburger ikonu stilleri */
+#menu-icon {
+    display: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+/* Mobilde hamburger menÃƒÂ¼sÃƒÂ¼nÃƒÂ¼ gÃƒÂ¶stermek iÃƒÂ§in */
+@media (max-width: 768px) {
+    .navbar {
+        display: none; /* BaÃ…Å¸langÃ„Â±ÃƒÂ§ta navbar'Ã„Â± gizle */
+    }
+
+    #menu-icon {
+        display: block; /* Hamburger ikonu yalnÃ„Â±zca mobilde gÃƒÂ¶rÃƒÂ¼nÃƒÂ¼r */
+        cursor: pointer; /* TÃ„Â±klanabilir olduÃ„Å¸unu belirt */
+        position: relative; /* Konumlandırmayı etkinleştir */
+        left: 10px; /* Sola hizala */
+        margin-left: 0; /* Ekstra boşluk bırakma */
+    }
+
+    /* Navbar aktif olduÃ„Å¸unda, menÃƒÂ¼ elemanlarÃ„Â±nÃ„Â± gÃƒÂ¶rÃƒÂ¼nÃƒÂ¼r yap */
+    .navbar.active {
+        display: flex; /* Navbar'Ã„Â± aÃƒÂ§mak iÃƒÂ§in aktif olduÃ„Å¸unda gÃƒÂ¶rÃƒÂ¼nÃƒÂ¼r yap */
+        flex-direction: column; /* Dikeyde sÃ„Â±ralanmasÃ„Â±nÃ„Â± saÃ„Å¸la */
+        gap: 10px; /* Elemanlar arasÃ„Â±nda boÃ…Å¸luk bÃ„Â±rak */
+        background-color: rgba(0, 0, 0, 0.9); /* Daha gÃƒÂ¶rÃƒÂ¼nÃƒÂ¼r bir arka plan rengi */
+        padding: 10px 0; /* ÃƒÅ“stten ve alttan padding ekle */
+        position: absolute; /* Navbar'Ã„Â± ekranÃ„Â±n ÃƒÂ¼st kÃ„Â±smÃ„Â±na yerleÃ…Å¸tir */
+        top: 60px; /* ÃƒÅ“stten biraz boÃ…Å¸luk bÃ„Â±rak */
+        right: 0;
+        left: 0; /* SayfanÃ„Â±n tamamÃ„Â±nÃ„Â± kapsar */
+        z-index: 10; /* MenÃƒÂ¼ ÃƒÂ¼stte gÃƒÂ¶rÃƒÂ¼nmesi iÃƒÂ§in */
+    }
+
+    /* Navbar elemanlarÃ„Â±nÃ„Â±n stilini iyileÃ…Å¸tirme */
+    .navbar a {
+        color: white; /* Linklerin beyaz olmasÃ„Â±nÃ„Â± saÃ„Å¸la */
+        font-size: 1.2rem; /* YazÃ„Â± boyutunu bÃƒÂ¼yÃƒÂ¼t */
+        text-align: center; /* Linkleri ortala */
+        text-decoration: none; /* Alt ÃƒÂ§izgiyi kaldÃ„Â±r */
+        padding: 10px 20px; /* Linklere padding ekle */
+    }
+
+    .navbar a:hover {
+        background-color: rgba(255, 255, 255, 0.2); /* Hoverda arka plan rengi ekle */
+    }
+
+    /* EnterClass formunu dikey ve yatayda ortalamak iÃƒÂ§in */
+    .logpage {
+        display: flex;
+        justify-content: center; /* Yatayda ortalamak iÃƒÂ§in */
+        align-items: center; /* Dikeyde ortalamak iÃƒÂ§in */
+        height: 100vh; /* EkranÃ„Â±n tam yÃƒÂ¼ksekliÃ„Å¸i */
+        background-color: black; /* Form arka planÃ„Â±nÃ„Â± koyu yapmak */
+    }
+
+    .LogPage form {
+        position: relative;
+        background-color: rgba(1, 8, 16, 0.853);
+        width: 350px;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0px 0px 20px rgb(241, 40, 171), 0px 0px 25px rgb(116, 148, 237), 0px 0px 30px rgb(203, 214, 214);
+    }
+
+    .LogPage form .formgroup {
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .LogPage form .formgroup input {
+        width: 100%;
+        height: 40px;
+        background-color: #f3a7f1;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        color: white;
+    }
+
+    .LogPage form .formgroup span {
+        position: absolute;
+        left: 20px;
+        top: 10px;
+        color: rgb(82, 48, 48);
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        transition: all 0.5s;
+        padding: 3.9px 7px;
+        border-radius: 5px;
+    }
+
+    .LogPage form .formgroup input:focus ~ span, .LogPage form .formgroup input:valid ~ span {
+        top: -15px;
+        left: 20px;
+        font-size: 0.9rem;
+        background-color: rgb(226, 199, 204);
+    }
+
+    .LogPage form .btngroup {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .LogPage form .btngroup button {
+        font-size: 18px;
+        color: rgb(82, 48, 48);
+        background-color: rgb(215, 183, 189);
+        border: none;
+        outline: none;
+        border-radius: 25px;
+        padding: 5px 1px;
+        box-shadow: 0px 0px 5px rgb(246, 255, 255), 0px 0px 10px rgb(203, 214, 214), 0px 0px 15px rgb(203, 214, 214);
+    }
+    .logpage .LogPage form .btngroup button {
+        font-size: 21px; /* YazÄ± boyutunu artÄ±rdÄ±k */
+        width: 170px; /* Buton geniÅŸliÄŸini bÃ¼yÃ¼ttÃ¼k */
+        color: rgb(0, 0, 0);
+        background-color: rgb(255, 255, 255);
+        border: none;
+        outline: none;
+        border-radius: 25px; /* Daha az oval hale getirmek iÃ§in */
+        padding: 10px 25px; /* Butonu bÃ¼yÃ¼tmek iÃ§in padding artÄ±rÄ±ldÄ± */
+        box-shadow: 0px 0px 5px rgb(255, 255, 255), 0px 0px 10px rgb(254, 191, 255), 0px 0px 15px rgb(255, 118, 239);
+        transition: all 0.3s ease; /* Hover efektlerinde yumuÅŸak geÃ§iÅŸ iÃ§in */
+        /* Butonu sağa ve aşağıya kaydırmak için */
+        position: relative;
+        right: -18px;  /* Butonu sağa kaydırır */
+        bottom: -10px; /* Butonu aşağıya kaydırır */
+    }
+
+    /* Formu daha kÃƒÂ¼ÃƒÂ§ÃƒÂ¼k ekranlarda tam geniÃ…Å¸lik yapmak */
+    @media (max-width: 480px) {
+        .LogPage form {
+            width: 100%; /* Formu tam geniÃ…Å¸lik yap */
+            padding: 15px; /* Paddingi kÃƒÂ¼ÃƒÂ§ÃƒÂ¼lt */
+        }
+    }
+}

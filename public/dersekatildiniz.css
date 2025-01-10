@@ -1,0 +1,183 @@
+/* Genel Stil Ayarları */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --bg-colour: black;
+    --second-bg-colour: rgba(97, 91, 91, 0.109);
+    --text-color: white;
+    --main-color: #f3a7f1;
+}
+
+html {
+    font-size: 80%;
+    overflow-x: hidden;
+}
+
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    background-color: var(--bg-colour);
+    color: var(--text-color);
+}
+
+/* Header düzeni */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 5%;
+    background: var(--bg-colour);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+}
+
+/* Logo düzeni */
+.logo {
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+.logo span {
+    font-size: 2rem;
+    text-shadow: 0 0 25px var(--main-color), 0 0 50px var(--main-color), 0 0 75px var(--main-color); /* Işıklı efekt */
+    color: var(--main-color);
+}
+
+/* Navbar düzeni */
+.navbar {
+    display: flex;
+    align-items: center;
+    transition: 0.3s ease;
+}
+
+.navbar a {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-left: 2rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+    text-decoration: none; /* Alt çizgi kaldırıldı */
+}
+
+.navbar a:hover {
+    color: var(--main-color);
+    font-size: 1.5rem;  /* Font büyümesi */
+    text-decoration: underline; /* Sadece hoverda altı çizili */
+}
+
+.navbar a.active {
+    color: #ffbefe;
+    font-size: 1.8rem;
+    border-bottom: 3px solid #ffbefe;
+}
+
+/* Menü ikonu */
+#menu-icon {
+    font-size: 3.6rem;
+    color: var(--main-color);
+    display: none; /* Menü ikonu mobilde aktif olacak */
+}
+
+/* Container düzeni - Tik işareti ve mesajın yer aldığı kısım */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Ekranın %80'ini kaplasın */
+    text-align: center;
+    padding-left: 30px; /* Yazıyı biraz sola kaydırmak için */
+}
+
+/* Tik işareti */
+.checkmark {
+    font-size: 300px;  /* Tik işareti boyutunu büyük tutalım */
+    color: green; /* Yeşil renk */
+    margin-bottom: 20px; /* Tik işareti ile mesaj arasındaki boşluk */
+    text-shadow: 0 0 10px #f7c8d2, 0 0 20px #f7c8d2, 0 0 30px #f7c8d2; /* Beyazımsı pembe yansıma efekti */
+}
+
+/* "You attended the class" yazısı */
+.message {
+    font-size: 36px; /* Büyütülmüş boyut */
+    color: white;
+    margin-top: 20px;
+}
+
+/* Good lessons yazısı ve gülücük */
+.good-lessons {
+    font-size: 24px; /* Font boyutunu küçültük */
+    color: #ffbefe;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Yazı ile emoji arasındaki boşluk */
+}
+
+/* Emoji için profesyonel bir görünüm */
+.emoji {
+    font-size: 28px; /* Emoji boyutu */
+}
+.extra {
+    align-items: center;
+    color: aliceblue;
+}
+
+/* Mobilde Hamburger Menüsü Ayarları */
+@media (max-width: 768px) {
+    .navbar {
+        display: none; /* Başlangıçta navbar'ı gizle */
+        flex-direction: column; /* Menü öğelerini dikey sıralama */
+        width: 100%;
+    }
+
+    #menu-icon {
+        display: block; /* Menü ikonunu mobilde göster */
+    }
+
+    .navbar.active {
+        display: flex; /* Navbar aktif olduğunda görünür */
+    }
+
+    /* Tik işareti ve mesajı ortalamak */
+    .container {
+        height: 100vh; /* Ekranı tam kapsayacak şekilde ayarlandı */
+    }
+
+    .checkmark {
+        font-size: 250px;  /* Tik işareti boyutunu biraz küçültüyoruz */
+        margin-bottom: 10px;
+    }
+
+    .message {
+        font-size: 28px; /* Mesajı mobilde biraz küçültüyoruz */
+        margin-top: 10px;
+    }
+
+    .good-lessons {
+        font-size: 20px; /* Good lessons yazısının font boyutunu küçültüyoruz */
+        margin-top: 5px;
+    }
+}

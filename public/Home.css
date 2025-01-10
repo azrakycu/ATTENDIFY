@@ -1,0 +1,591 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border:none;
+    outline: none;
+    scroll-behavior: smooth;  
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+:root{
+    
+    --bg-colour: #080808;  
+    --second-bg-colour: black;
+    --text-color: white;
+    --main-color: #f3a7f1;
+    
+}
+html{
+    font-size: 80%;
+    overflow-x: hidden;
+}
+body{
+    
+    max-width: 100%;
+    overflow-x: hidden;
+    background-color: var(--bg-colour);
+    color: var(--text-color);
+}
+
+* {
+    box-sizing: border-box;
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 5%;
+    background: var(--bg-colour);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;  /* Ortalamak iÃ§in */
+    align-items: center;
+    z-index: 5;
+    height: auto;
+}
+
+.logo {
+    font-size: 3rem;
+    color: var(--text-color);
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s ease;
+    display: flex;  /* Esnek kutu modelini kullanarak */
+    justify-content: center;  /* Yatayda ortalamak */
+    align-items: center;  /* Dikeyde ortalamak */
+}
+
+.logo img {
+    max-width: 100%;  /* Resmin boyutunu esnetir */
+    height: auto;
+    width: 150px; /* Ä°stediÄŸiniz logo boyutuna gÃ¶re ayarlayÄ±n */
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+.logo span {
+    font-size: 3.5rem;
+    text-shadow: 0 0 25px var(--main-color), 0 0 50px var(--main-color), 0 0 75px var(--main-color);
+}
+
+/* Mobil iÃ§in logo boyutunu daha da kÃ¼Ã§Ã¼ltmek */
+@media screen and (max-width: 768px) {
+    .logo img {
+        width: 120px; /* Mobilde kÃ¼Ã§Ã¼k logo */
+    }
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 5%;
+    background: var(--bg-colour);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+    /* width: 100%; navbar iÃ§in de geÃ§erli */
+}
+
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    width: 100%;
+    margin-left: auto;  /* SaÄŸ tarafa itme */
+}
+
+.navbar a {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-right: 3rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+    text-decoration: none; 
+    border-bottom: none; 
+}
+
+.navbar a:hover {
+    color: var(--main-color); /* Ãœzerine gelince pembe */
+    font-size: 2rem;  /* Font bÃ¼yÃ¼mesi */
+    border-bottom: 3px solid var(--main-color);  /* Alt Ã§izgi pembe */
+}
+.navbar a.active {
+    color: #ffbefe; /* Aktif sayfa yazÄ±sÄ± pembe */
+    font-size: 1.8rem;  /* Font bÃ¼yÃ¼mesi */
+    border-bottom: 3px solid #ffbefe; /* Alt Ã§izgi pembe */
+}
+#menu-icon{
+    font-size: 3.6rem;
+    color: var(--main-color);
+    cursor: pointer;
+    display: none;
+}
+section{
+    min-height: 100vh;
+    padding: 10rem 12% 10rem;
+}
+.home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15rem;
+}
+.home-content{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    text-align: left;
+    justify-content: center;
+    margin-top: 3rem;
+}
+span{
+    color: var(--main-color);
+}
+.logo span{
+    color: var(--main-color);
+    text-shadow: 0 0 25px var(--main-color), 0 0 50px var(--main-color), 0 0 75px var(--main-color);
+}
+.home-content h3{
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+}
+.home-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    line-height: 1;
+}
+.home-img img {
+    position: relative;
+    top: 3rem;
+    width: 32vw;
+    border-radius: 50%;
+    box-shadow: 0 0 25px var(--main-color); /* BoÅŸluk dÃ¼zeltildi */
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+}
+
+/* :hover pseudo-sÄ±nÄ±fÄ± doÄŸru kullanÄ±mÄ± */
+.home-img img:hover {
+    box-shadow: 0 0 25px var(--main-color),
+                0 0 50px var(--main-color),
+                0 0 100px var(--main-color);
+}
+.home-content p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.8;
+    max-width: 1000px;
+}
+.social-icons a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width:4.5rem;
+    height:4.5rem;
+    border-radius: 70px;
+    background: transparent;
+    border: 1px solid var(--main-color);
+    font-size: 1.5rem;
+    color: var(--main-color);
+    margin: 1.5rem 0.75rem 1.5rem 0;
+    transition: 0.3s ease-in-out;
+}    
+.social-icons a:hover{
+    color: var(--text-color);
+    transform: scale(1.3)translateY(-5px);
+    box-shadow: 0 0 25px var(--main-color);
+    background-color: var(--main-color);
+}
+.btn{
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background: var(--main-color);
+    box-shadow: 0 0 25px var(--main-color);
+    border-radius: 40px;
+    font-size: 1.6rem;
+    color: black;
+    border: 2px solid transparent;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+.btn:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 50px var(--main-color);
+}
+.btngroup{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+.btngroup a:nth-of-type(2)
+{
+    background-color: #080808;
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    box-shadow: 0 0 25px transparent;
+}
+.btngroup a:nth-of-type(2):hover{
+    box-shadow: 0 0 25px var(--main-color);
+    background-color: var(--main-color);
+    color: #080808;
+}
+.text.animation{
+    font-size: 34px;
+    font-weight: 600;
+    min-width: 280px;
+    position: relative;
+}
+.cursor {
+    display: inline-block;
+    background-color: transparent;
+    margin-left: 2px; 
+    animation: blink 0.7s steps(1) infinite;
+}
+.text.animation span{
+   position: relative;
+}
+.text.animation span::before{
+    content: "Attend Class";
+    color: var(--main-color);
+    animation: words 20s infinite;
+}
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+.hidden {
+    display: none;
+}
+.services {
+    background: var(--bg-colour);
+    color: var(--text-color);
+    padding: 4rem 5%;
+}
+
+.services h2 {
+    text-align: center;
+    font-size: 3rem;
+    color: var(--text-color);
+    margin-bottom: 4rem;
+}
+
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+}
+
+.services-box {
+    background-color: var(--main-color);
+    height: 300px;
+    border-radius: 3rem;
+    border: 5px solid transparent;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+}
+
+.services-box:hover {
+    background: var(--text-color);
+    color: var(--bg-colour);
+    border: 5px solid var(--main-color);
+    transform: scale(1.03);
+}
+
+.services-box .service-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+}
+
+.service-info h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.service-info p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+}
+
+/* Genel Buton Stili */
+.btn {
+    display: inline-block;
+    width: calc(100% - 120px);
+    padding: 1rem 2.8rem;
+    background: var(--main-color);
+    box-shadow: 0 0 25px var(--main-color);
+    border-radius: 40px;
+    font-size: 1.6rem;
+    color: rgb(255, 255, 255);
+    border: 2px solid transparent;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    text-align: center; /* Buton içindeki metni ortalar */
+    box-sizing: border-box; /* Padding dahil tüm genişliği hesaplar */
+}
+
+/* Hover Efekti */
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px var(--main-color);
+}
+
+/* Buton Grubu */
+.btngroup2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+}
+
+/* İkinci buton için özel stil */
+.btngroup2 a:nth-of-type(2) {
+    background-color: #080808;
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    box-shadow: 0 0 25px transparent;
+}
+
+/* İkinci butonun hover efekti */
+.btngroup2 a:nth-of-type(2):hover {
+    box-shadow: 0 0 25px var(--main-color);
+    background-color: var(--main-color);
+    color: #fffbfb;
+}
+
+.contact {
+    background-color: var(--bg-colour);
+}
+.contact h2 {
+    margin-bottom: 3rem;
+    color: var(--text-color);
+}
+.contact form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    margin: 5rem auto;
+    text-align: center;
+}
+.contact form .input-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.contact form .input-box input,
+.contact form select, /* Added select element here */
+.contact form textarea {
+    width: 100%;
+    padding: 2.5rem;
+    font-size: 1.8rem;
+    color: var(--text-color);
+    background: var(--second-bg-colour);
+    border-radius: 2rem;
+    border: 2px solid var(--main-color);
+    margin: 1.5rem 0;
+    resize: none;
+}
+
+.contact form .btn {
+    margin-top: 2rem;
+}
+select {
+    appearance: none; /* Varsayılan tarayıcı stilini kaldır */
+    -webkit-appearance: none; /* Safari için */
+    -moz-appearance: none; /* Firefox için */
+    background-color: #f0f0f0; /* Arka plan rengi */
+    border: 1px solid #ccc; /* Kenarlık */
+    border-radius: 5px; /* Köşe yuvarlama */
+    padding: 10px; /* İç boşluk */
+    font-size: 16px; /* Yazı boyutu */
+    color: #333; /* Yazı rengi */
+    cursor: pointer; /* İşaretçi stili */
+    width: 100%; /* Genişlik */
+    background: #f0f0f0 url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjEwIiB2aWV3Qm94PSIwIDAgMTYgMTYiIHdpZHRoPSIxMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNOC4wNTcgMTAuNTYzbC01LjE3NC01LjE3NGExIDEgMCAxIDEgMS40MTQtMS40MTRsNC40NjMgNC40NjMgNC40NjMtNC40NjNhMSAxIDAgMSAxIDEuNDE0IDEuNDE0bC01LjE3NCA1LjE3NGEuOTkuOTkgMCAwIDEtLjcwNi4yOTMuOTkuOTkgMCAwIDEtLjcwNi0uMjkzeiIvPjwvc3ZnPg==') no-repeat right 10px center;
+    background-size: 12px; /* Simge boyutu */
+}
+
+select:focus {
+    outline: none; /* Focus olduğunda kenarlık kaldır */
+    border-color: #007bff; /* Focus durumunda kenarlık rengi */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Hafif gölge */
+}
+
+select option {
+    padding: 10px; /* Dropdown içindeki seçeneklerin boşluğu */
+}
+
+
+.footer{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    padding: 40px 0;
+    background-color: var(--second-bg-colour);
+}
+.footer .social{
+    text-align: center;
+    padding-bottom: 25px;
+    color: var(--main-color);
+}
+
+.footer .social a{
+    font-size: 25px;
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 10px;
+    transition: 0.3s ease-in-out;
+}
+.footer .social a:hover{
+    transform: scale(1.2)translateY(-10px);
+    background-color: var(--main-color);
+    color: #080808;
+    box-shadow: 0 0 25px var(--main-color);
+}
+.footer ul{
+    margin-top: 0;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 0;
+    text-align: center;
+}
+.footer ul li a{
+    color: var(--text-color);
+    border-bottom: 3px solid transparent;
+    transition: 0.3s ease-in-out;
+}
+.footer ul li a:hover{
+    border-bottom: 3px solid var(--main-color);
+}
+.footer ul li {
+    display: inline-block;
+    padding: 0 15px;
+}
+.footer .copyright{
+    margin-top: 50px;
+    text-align: center;
+}
+
+/* Mobil cihazlar iÃ§in stil dÃ¼zenlemeleri */
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 1rem 5%;
+    }
+    
+    .logo {
+        font-size: 2rem;
+    }
+
+    .navbar a {
+        font-size: 1rem;
+        margin-right: 1rem;
+    }
+
+    .home {
+        flex-direction: column;
+        gap: 5rem;
+        text-align: center;
+    }
+
+    .home-img img {
+        width: 70vw;
+        margin-top: 7rem;
+    }
+
+    .home-content h1 {
+        font-size: 3rem;
+    }
+
+    .home-content p {
+        font-size: 1.2rem;
+        max-width: 100%;
+    }
+
+    .btn {
+        padding: 1rem 2rem;
+        font-size: 1.4rem;
+    }
+
+    .btngroup {
+        flex-direction: row; /* ButonlarÄ± yatay hizalar */
+        justify-content: space-between; /* Butonlar arasÄ±na boÅŸluk ekler */
+    }
+
+    .btngroup a {
+        font-size: 1.4rem; /* Mobilde yazÄ± boyutunu kÃ¼Ã§Ã¼ltÃ¼r */
+        padding: 1rem 2rem; /* ButonlarÄ±n boyutunu kÃ¼Ã§Ã¼ltÃ¼r */
+    }
+
+    .services-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .services-box {
+        height: auto;
+        padding: 2rem;
+    }
+
+    .contact form {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+   
+}
+
+
+/* Daha kÃ¼Ã§Ã¼k ekranlar iÃ§in, Ã¶rneÄŸin 480px ve altÄ± */
+@media screen and (max-width: 480px) {
+    .home {
+        gap: 3rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .navbar a {
+        font-size: 1rem;
+    }
+
+    .home-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .btn {
+        font-size: 1.2rem;
+        padding: 0.8rem 1.8rem;
+    }
+
+    
+}

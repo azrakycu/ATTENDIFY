@@ -1,0 +1,325 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --bg-colour: black;
+    --second-bg-colour: black;
+    --text-color: white;
+    --main-color: #f3a7f1;
+}
+
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    background-color: var(--bg-colour);
+    color: var(--text-color);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding:1rem 4%;
+    background: var(--bg-colour);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+}
+
+header h1 {
+    font-size:  1.8rem;
+    font-weight: bold;
+    text-shadow: 0 0 20px #f3a7f1, 0 0 30px #f3a7f1, 0 0 40px #f3a7f1;
+}
+
+.logo {
+    font-size: 2rem;
+    color: #f3a7f1;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo span {
+    font-size: 1.2rem;
+    text-shadow: 0 0 25px var(--main-color), 0 0 50px var(--main-color), 0 0 75px var(--main-color);
+}
+
+
+/* Header */
+header {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+    position: relative;
+}
+
+header .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--main-color);
+    text-transform: uppercase;
+    border-bottom: none; /* Alt çizgiyi kaldırır */
+    text-transform: capitalize; /* İlk harfi büyük yapar */
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-left: auto;
+}
+
+.navbar a {
+    font-size: 1rem; /* Yazı boyutunu düzeltik */
+    color: var(--text-color);
+    margin-left: 2.5rem; /* Bağlantılar arasındaki boşluğu artırdık */
+    font-weight: 500;
+    transition: 0.3s ease;
+    text-decoration: none;
+    border-bottom: none;
+    padding: 0.5rem 0; /* Üst ve alt padding ekledik */
+}
+
+.navbar a:hover {
+    color: var(--main-color);
+    font-size: 1.5rem;
+    border-bottom: 3px solid var(--main-color);
+}
+
+.navbar a.active {
+    color: #ffbefe;
+    font-size: 1.2rem;
+    border-bottom: 3px solid #ffbefe;
+}
+
+
+#menu-icon {
+    font-size: 2.5rem;
+    color: var(--main-color);
+    cursor: pointer;
+    display: none;
+}
+
+.contact-form {
+    background-color: var(--second-bg-colour);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: 10rem auto; /* Navbar'a göre mesafe ayarlandı */
+    width: 100%;
+    color: var(--text-color);
+}
+
+.contact-form h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: var(--main-color);
+    text-align: center;
+}
+
+.contact-form label {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    background: var(--bg-colour);
+    border-radius: 2rem;
+    border: 2px solid var(--main-color);
+    margin-bottom: 2rem;
+    resize: none;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 1rem;
+    background: var(--main-color);
+    box-shadow: 0 0 25px var(--main-color);
+    border-radius: 40px;
+    font-size: 1.2rem;
+    color: black;
+    border: 2px solid transparent;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px var(--main-color);
+}
+.footer{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    padding: 40px 0;
+    background-color: var(--second-bg-colour);
+}
+.footer .social{
+    text-align: center;
+    padding-bottom: 25px;
+    color: var(--main-color);
+}
+
+.footer .social a{
+    font-size: 25px;
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 10px;
+    transition: 0.3s ease-in-out;
+}
+.footer .social a:hover{
+    transform: scale(1.2)translateY(-10px);
+    background-color: var(--main-color);
+    color: #080808;
+    box-shadow: 0 0 25px var(--main-color);
+}
+.footer ul{
+    margin-top: 0;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 0;
+    text-align: center;
+}
+.footer ul li a{
+    color: var(--text-color);
+    border-bottom: 3px solid transparent;
+    transition: 0.3s ease-in-out;
+}
+.footer ul li a:hover{
+    border-bottom: 3px solid var(--main-color);
+}
+.footer ul li {
+    display: inline-block;
+    padding: 0 15px;
+}
+.footer .copyright{
+    margin-top: 50px;
+    text-align: center;
+}
+
+/* Hamburger Menü ve Navbar'ın mobil görünümü */
+@media screen and (max-width: 768px) {
+    .navbar {
+        display: none; /* Navbar'ı gizleyelim */
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: var(--bg-colour);
+        text-align: center;
+    }
+
+    .navbar.active {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1rem;
+    }
+
+    #menu-icon {
+        font-size: 1.7rem; /* Boyutunu küçültmek için */
+        color: white; /* Rengini beyaz yapmak için */
+        cursor: pointer;
+        display: block;
+        z-index: 10;
+    }
+    
+    .navbar a {
+        margin-left: 0;
+        padding: 1rem 0;
+        font-size: 1.2rem;
+        text-align: center;
+    }
+}
+
+.contact-form {
+    background-color: var(--second-bg-colour);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: 10rem auto;
+    width: 100%;
+    color: var(--text-color);
+}
+
+.contact-form h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: var(--main-color);
+    text-align: center;
+}
+
+.contact-form label {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    background: var(--bg-colour);
+    border-radius: 2rem;
+    border: 2px solid var(--main-color);
+    margin-bottom: 2rem;
+    resize: none;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 1rem;
+    background: var(--main-color);
+    box-shadow: 0 0 25px var(--main-color);
+    border-radius: 40px;
+    font-size: 1.2rem;
+    color: black;
+    border: 2px solid transparent;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px var(--main-color);
+}

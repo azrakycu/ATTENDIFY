@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance List</title>
+  <link rel="stylesheet" href="index.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <header class="header">
+    <a href="home.html" class="logo">
+      <span>Attendify</span>
+    </a>
+    <i class='bx bx-menu' id="menu-icon"></i>
+    <nav class="navbar">
+      <a href="./home.html" class="active"> Home</a>
+      <a href="./Loginpage.html"> Log in</a>
+      <a href="./SignUp.html"> Sign up</a>
+      <a href="./profile.html"> Profile</a>
+      <a href="./contactUs.html">Contact Us</a>
+    </nav>
+  </header>
+
+  <section class="attendance-section">
+    <!-- Export Button Section (Top Right) -->
+    <div style="text-align: right; margin-top: 20px; padding-right: 120px;">
+      <button onclick="exportTableToExcel('attendanceTable', 'Attendance_List')" 
+              style="padding: 10px 20px; background-color: #d6e4f7; color: rgb(4, 3, 3); border: none; border-radius: 5px; cursor: pointer;">
+        Export to Excel
+      </button>
+    </div>
+    <!-- Attendance Table -->
+    <table class="attendance-table" id="attendanceTable">
+      <thead>
+          <!-- Başlıklar buraya dinamik olarak eklenecek -->
+      </thead>
+      <tbody id="attendance-body">
+          <!-- Öğrenci verileri buraya dinamik olarak eklenecek -->
+      </tbody>
+  </table>
+</section>
+
+<script>
+  console.log('Script başlıyor...');
+const urlParams = new URLSearchParams(window.location.search);
+const classId = urlParams.get('classId');
+
+// DOM elementlerini alıyoruz
+const classNameElement = document.getElementById('classname');
+const attendanceBody = document.getElementById('attendance-body');
+
+// Ders kodunu SENG209 -> 209 formatına dönüştürüyoruz
+const courseCode = classId.replace('SENG', '');
+// classId'yi sayfada görüntülüyoruz
+console.log("courseode:",courseCode);
+console.log("classNamelement:",classNameElement);
+
+classNameElement.innerText = classId; // Ders ismini dinamik alacağız
+
+console.log('Original Class ID:', classId); // Örnek: SENG209
+console.log('Converted Course Code:', courseCode); // Örnek: 209
+
+// API'den katılım bilgilerini alıyoruz
+fetch('https://peaceful-forest-90255-fbe04ed90482.herokuapp.com/api/attendanceRoutesFull/attendance-full', {
+  method: 'POST',  // POST isteği
+  headers: {
+      'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+      classId: courseCode  // classId parametresini gönderiyoruz
+  })
+})
+.then(response => response.json())
+.then(data => {
+  // API'den gelen öğrenci verisini listele
+  const totalWeeks = data.attendance[0].attendanceStatus.length; // Haftaların sayısını alıyoruz
+
+  // Tablo başlıklarını dinamik olarak oluşturuyoruz
+  const tableHeader = document.createElement('tr');
+  tableHeader.innerHTML = `
+      <th>#</th>
+      <th>Student Number</th>
+      <th>Student Name</th>
+  `;
+  for (let i = 1; i <= totalWeeks; i++) {
+      tableHeader.innerHTML += `<th>Week ${i}</th>`;
+  }
+  document.querySelector('thead').appendChild(tableHeader);
+
+  // Öğrencilerin katılım bilgilerini satırlara ekliyoruz
+  data.attendance.forEach((student, index) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${student.studentId}</td>
+          <td>${student.username} ${student.surname}</td>
+      `;
+
+      // Haftalar için katılım bilgilerini ekliyoruz
+      student.attendanceStatus.forEach(status => {
+          const attendanceStatus = status === 'present' ? '✅' : '❌';
+          row.innerHTML += `<td>${attendanceStatus}</td>`;
+      });
+
+      attendanceBody.appendChild(row);
+  });
+})
+.catch(error => console.log('Error fetching attendance:', error));
+
+</script>
+
+</body>
+</html>

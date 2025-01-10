@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derse Katıldınız</title>
+    <link rel="stylesheet" href="index.css">
+    <head>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" rel="stylesheet">
+    </head>
+</head>
+<body>
+         <!-- Topbar -->
+  <header class="topbar">
+    <a href="home.html" class="logo">Attendify</a>
+    <i class='bx bx-menu' id="menu-icon"></i>
+    <nav class="navbar">
+        <a href="./home.html">Home</a>
+        <a href="./Loginpage.html" > Log in</a>
+        <a href="./SignUp.html" > Sign Up</a>
+        <a href="./profile.html">Profile</a>
+        <a href="./contactUs.html">Contact Us</a>
+
+    </nav>
+  </header>
+
+    <div class="container">
+        <div class="checkmark">&#10003;</div>
+        <div class="message">You Attended the Class</div>
+        <div class="good-lessons">
+            <span>Have a good lesson!</span>
+            <span class="emoji">😊</span>
+            <span class="extra">You can check your attendance informations from Profile!</span>
+        </div>
+    </div>
+</script>
+<script>
+    // Hamburger menü kontrolü
+    document.getElementById('menu-icon').addEventListener('click', function () {
+        const navbar = document.querySelector('.navbar');
+        navbar.classList.toggle('show'); // Menüyü aç/kapa
+    });
+</script>
+    <script src="home.js"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    
+    <link rel="stylesheet" href="index.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+      <!-- Boxicons Icon Kütüphanesini Dahil Et -->
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <header class="header">
+        <a href="home.html" class="logo">
+            <span>Attendify</span>
+        </a>
+    
+        <!-- Menü ikonu -->
+        <i class='bx bx-menu' id="menu-icon"></i>
+
+    
+        <nav class="navbar">
+            <a href="./home.html" class="active">Home</a>
+            <a href="./Loginpage.html">Log in</a>
+            <a href="./SignUp.html">Sign up</a>
+            <a href="./profile.html">Profile</a>
+            <a href="./contactUs.html">Contact Us</a>
+        </nav>
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-content">
+            <h1>Hurry! <span>Attend</span> Your Class!</h1>
+            <h3 class="text-animation">You can <span id="animated-text"></span><span class="cursor">|</span></h3>
+
+            <div><p>Don't forget enter the passkey to say   'I am here!!!</p></div>
+            <div><p>For scan the QR code click our logo!</p></div>
+
+            <div class="social-icons">
+                <a href="https://www.instagram.com/attendifyweb"><i class='bx bxl-instagram' ></i></a>
+                <a href="http://linkedin.com/in/attendify-web-a1458b342"><i class='bx bxl-linkedin-square' ></i></a>
+                <a href="http://www.youtube.com/@AttendifyWeb"><i class='bx bxl-youtube' ></i></a> 
+            </div>
+
+            <div class="btngroup">
+                <a href="enterclass.html" class="btn">Attend</a>
+                <a href="#passkey" id="passkey-btn" class="btn">Passkey</a>
+            </div>
+            
+        </div>
+            <div class="home-img">
+                <a href="qrpage.html">
+                    <img src="images/logo.png" alt="ouricon">
+                </a>
+                </a>
+                
+            </div>
+            
+    </section><section class="services" id="services">
+        <h2 class="heading">What you can do?</h2>
+    
+        <div class="services-container">
+            <div class="services-box">
+                <div class="service-info">
+                    <h3>Attend Your Class!</h3>
+                    <p>Scan the QR code using your phone camera!
+                         On the 'Enter Class' page, input your student ID and the 
+                         passkey provided by your instructor at the start of the lecture.
+                    </p>
+
+                </div>
+            </div>
+    
+            <div class="services-box">
+                <div class="service-info">
+                    <h3>See The Course Schedule!</h3>
+                    <p>Never miss a class again! Easily keep track of your lectures 
+                        by date, time, and location with our intuitive schedule feature.</p>
+                </div>
+            </div>
+    
+            <div class="services-box">
+                <div class="service-info">
+                    <h3>See The Attendance Information!</h3>
+                    <p>Stay on top of your attendance! Access detailed records 
+                        of your class attendance, track your participation, 
+                        and ensure you're always in the clear.</p>
+                    <p>We want to help you avoid any unexpected surprises 
+                        or difficult situations down the road!"</p>
+                </div>
+            </div>
+    
+            <div class="services-box">
+                <div class="service-info">
+                    <h3>Analyze The Participation Activity Level!</h3>
+                    <p>With our weekly, monthly, and yearly attendance records, you can 
+                        track your participation over time and adjust your efforts 
+                        accordingly. Stay on top of your performance and fine-tune 
+                        your study habits for consistent progress!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="btngroup2">
+          <a href="howToUse.html" class="btn">How To Use</a>
+    </div>
+ 
+
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact Your <span>Teacher</span></h2>
+        <form id="contactForm">
+            <div class="input-box">
+                <label for="teachermails">Send to:</label>
+                <select id="teachermails" name="teachermails" required>
+                    <option value="">Select</option>
+                    <option value="yenalarslan@aybu.edu.tr">yenalarslan@aybu.edu.tr</option>
+                    <!--<option value="tgcetky988@gmail.com">tgcetky988@gmail.com</option> -->
+                </select>
+                <input type="text" id="fullname" placeholder="Full Name" required>
+            </div>
+            <div class="input-box">
+                <input type="email" id="email" placeholder="Email">
+                <input type="text" id="subject" placeholder="Subject" required>
+            </div>
+    
+            <div class="input-group2">
+                <textarea id="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
+                <input type="submit" value="Send Message" class="btn">
+            </div>
+        </form>
+    </section>
+    
+    
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://www.instagram.com/attendifyweb"><i class='bx bxl-instagram' ></i></a>
+            <a href="http://linkedin.com/in/attendify-web-a1458b342"><i class='bx bxl-linkedin-square' ></i></a>
+            <a href="http://www.youtube.com/@AttendifyWeb"><i class='bx bxl-youtube' ></i></a>
+        </div>
+
+        <ul class="list">
+            <li>
+                <a href="home.html">Home</a>
+            </li>
+            <li>
+                <a href="SignUp.html">Sign Up</a>
+            </li>
+            <li>
+                <a href="Loginpage.html">Log In</a>
+            </li>
+            <li>
+                <a href="profile.html">Profile</a>
+            </li>
+            <li>
+                <a href="contactUs.html">Contact Us</a>
+            </li>
+        </ul>
+        <p class="copyright">
+            @ Attendify | All Rights Reserved
+        </p>
+    </footer>
+   
+    
+    <script src="home.js"></script>
+</body>
+</html>

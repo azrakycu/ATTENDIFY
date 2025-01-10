@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Passkey</title>
+    <link rel="stylesheet" href="index.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <header class="header">
+        <a href="home.html" class="logo">
+            <span>Attendify</span>
+        </a>
+
+        <i class='bx bx-menu' id="menu-icon"></i>
+
+        <nav class="navbar">
+            <a href="./home.html">Home</a>
+            <a href="./Loginpage.html" > Log in</a>
+            <a href="./SignUp.html" > Sign Up</a>
+            <a href="./profile.html">Profile</a>
+            <a href="./contactUs.html">Contact Us</a>
+        </nav>
+    </header>
+  
+
+    <div class="qrbox">
+        <img id="passkeyImage" src="images/passkey.jpeg" alt="Click to create passkey" style="cursor: pointer; width: 200px; display: block; margin: 50px auto;">
+        <div class="command">
+            <h1>Click the image to start the lecture</h1>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://www.instagram.com/attendifyweb"><i class='bx bxl-instagram' ></i></a>
+            <a href="http://linkedin.com/in/attendify-web-a1458b342"><i class='bx bxl-linkedin-square' ></i></a>
+                <a href="http://www.youtube.com/@AttendifyWeb"><i class='bx bxl-youtube' ></i></a> 
+        </div>
+
+        <ul class="list">
+            <li>
+                <a href="home.html">Home</a>
+            </li>
+            <li>
+                <a href="SignUp.html">Sign Up</a>
+            </li>
+            <li>
+                <a href="Loginpage.html">Log In</a>
+            </li>
+            <li>
+                <a href="profile.html">Profile</a>
+            </li>
+            <li>
+                <a href="contactUs.html">Contact Us</a>
+            </li>
+        </ul>
+        <p class="copyright">
+            @ Attendify | All Rights Reserved
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById("passkeyImage").addEventListener('click', function () {
+         
+            // Ders seçimi için seçenekler sun
+            const courseCode = prompt("Hangi dersin şifresini görmek istiyorsunuz? (209 veya 211)");
+    
+            if (!['209', '211'].includes(courseCode)) {
+                alert("Geçersiz ders kodu! Lütfen 209 veya 211 yazın.");
+                return;
+            }
+    
+            fetch('https://peaceful-forest-90255-fbe04ed90482.herokuapp.com/api/check/passkey', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ courseCode }), // Sadece courseCode gönderiliyor
+})
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Server error: ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.passkey) {
+            alert(courseCode + ' course passkey: ' + data.passkey);
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred: ' + error.message);
+    });
+
+        });
+    </script>
+     <script src="home.js"></script>
+</body>
+</html>

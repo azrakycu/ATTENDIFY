@@ -1,0 +1,33 @@
+.qrbox {
+    display: flex;
+    justify-content: center; /* Yatayda ortalama */
+    align-items: center; /* Dikeyde ortalama */
+    height: 100vh; /* Tüm ekran yüksekliği */
+    flex-direction: column; /* Resim ve yazıyı alt alta koyma */
+    gap: 20px; /* Resim ile yazı arasındaki boşluğu sıfırlar */
+}
+
+.qrbox img {
+    max-width: 50%; /* Genişliği %50 yaparak küçültme */
+    max-height: 50%; /* Yüksekliği %50 yaparak küçültme */
+    height: auto; /* Görüntü oranını koruyarak boyutlandırma */
+    display: block;
+    border-radius: 100px;
+    margin-bottom: 0px; /* Aradaki boşluğu sıfırlar */
+    box-shadow: 0 0 25px var(--main-color); /* Boşluk düzeltildi */
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+}
+.qrbox img:hover {
+    box-shadow: 0 0 25px var(--main-color),
+                0 0 50px var(--main-color),
+                0 0 100px var(--main-color);
+}
+
+.command {
+    display: flex;
+    justify-content: center; /* Yatayda ortalama */
+    align-items: center; /* Dikeyde ortalama */
+    height: auto; /* Yüksekliği otomatik yaparak içerik kadar olmasını sağlar */
+    flex-direction: column; /* Yazıyı alt alta hizalama */
+}

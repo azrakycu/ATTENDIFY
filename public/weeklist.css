@@ -1,0 +1,312 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* Topbar (Header) */
+.topbar {
+    display: flex;
+    justify-content: space-between; /* Logo ve navbar arasını açar */
+    align-items: flex-start;
+    padding: 1rem 2rem;
+    background-color: black;
+    color: white;
+}
+
+header {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+    position: relative;
+}
+
+header .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--main-color);
+    text-transform: uppercase;
+    border-bottom: none; /* Alt çizgiyi kaldırır */
+}
+.logo {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s ease;
+    display: flex;  /* Esnek kutu modelini kullanarak */
+    justify-content: center;  /* Yatayda ortalamak */
+    align-items: center;  /* Dikeyde ortalamak */
+    text-transform: capitalize; /* İlk harfi büyük yapar */
+    text-decoration: none !important; /* Alt çizgiyi kaldırır, !important kullanarak önceliği arttırır */
+
+}
+
+.logo img {
+    max-width: 100%;  /* Resmin boyutunu esnetir */
+    height: auto;
+    width: 150px; /* Ä°stediÄŸiniz logo boyutuna gÃ¶re ayarlayÄ±n */
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+.logo span {
+    font-size:1.2rem;
+    text-shadow: 0 0 25px var(--main-color), 0 0 50px var(--main-color), 0 0 75px var(--main-color);
+    text-transform: capitalize; /* İlk harfi büyük yapar */
+    text-decoration: none !important; /* Alt çizgiyi kaldırır, !important kullanarak önceliği arttırır */
+}
+
+/* Navbar düzeni */
+#nav-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-end; /* Sağda hizalamak için */
+}
+
+#nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+#nav-links a:hover {
+    text-decoration: underline;
+}
+
+:root {
+    --bg-colour: #080808;
+    --second-bg-colour: rgba(97, 91, 91, 0.109);
+    --text-color: white;
+    --main-color: #ffbefe;
+}
+
+/* Arka planı siyah yapalım */
+body {
+    background-color: var(--bg-colour);
+    color: var(--text-color);
+}
+
+/* Başlık stili */
+.heading {
+    font-size: 3rem;
+    text-align: center;
+    margin: 3rem 0;
+    color: var(--main-color);
+}
+
+/* Teacher section stili */
+.teacher {
+    padding: 100px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #6e6e6e;
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #000000;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 10px;
+}
+
+.dropdown-content label {
+    display: block;
+    margin: 5px 0;
+}
+
+/* Show the dropdown when hovering */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#downloadExcel {
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: white;
+    background-color: #f3a7f1; /* Pembe arka plan */
+    border: none;
+    cursor: pointer;
+}
+
+#downloadExcel:hover {
+    background-color: #f3a7f1; /* Pembe arka plan */
+}
+
+
+
+/* Timeline container */
+.timeline-items {
+    display: flex;
+    flex-direction: column; /* Butonlar alt alta sıralanacak */
+    gap: 20px; /* Aralarındaki mesafe */
+    max-width: 600px; /* Butonlar belirli bir genişlikte olacak */
+    margin: 0 auto; /* Ortaya yerleştirme */
+}
+
+/* Satır için düzenleme */
+.timeline-row {
+    display: flex;
+    flex-direction: column; /* Alt alta sıralanacak */
+    gap: 20px;
+}
+
+/* Buton stili */
+.timeline-item {
+    width: 100%; /* Tam genişlikte olsun */
+    display: flex;
+    justify-content: center;
+}
+
+/* Buton içerik stili */
+.timeline-content {
+    background-color: var(--bg-colour);
+    border: 3px solid var(--main-color);
+    padding: 10px 300px; /* Buton büyütülmüş */
+    border-radius: 1rem; /* Köşeleri yuvarlatma */
+    box-shadow: 0 0 10px var(--main-color);
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    width: 100%;
+    max-width: 200px; /* Butonları sabit bir genişlikte tutma */
+    font-size: 1.0 rem; /* Buton yazı tipi büyütüldü */
+    
+    /* Yatayda ortalama, dikeyde ortalamak için */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px; /* Buton yüksekliğini belirleyebilirsiniz */
+
+    /* Yazının tek satırda kalması için */
+    white-space: nowrap;  /* Yazıyı tek satırda tutmak */
+    overflow: hidden;     /* Taşan yazıyı gizler */
+    text-overflow: ellipsis; /* Taşan yazıdaki fazlalığı "..." ile gösterir */
+}
+
+.timeline-content:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--main-color);
+}
+
+/* Footer */
+.footer {
+    background-color: #111;
+    color: var(--text-color);
+    padding: 30px;
+    text-align: center;
+}
+
+/* Footer içeriği */
+.footer .social a {
+    margin: 0 10px;
+    color: var(--text-color);
+    font-size: 1.5rem;
+}
+
+.footer .list {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.footer .list li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.footer .list a {
+    color: var(--text-color);
+}
+@media (max-width: 768px) {
+    /* Topbar (Header) */
+    .topbar {
+        text-align: center;
+    }
+
+    #nav-links {
+        flex-direction: column; /* Menü bağlantılarını dikey hizala */
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    /* Başlık (Heading) */
+    .heading {
+        font-size: 2rem; /* Daha küçük başlık boyutu */
+        margin: 2rem 0;
+    }
+
+    /* Teacher section */
+    .teacher {
+        padding: 50px 10px; /* Daha az dolgu */
+    }
+
+    /* Timeline container */
+    .timeline-items {
+        gap: 15px; /* Elemanlar arasındaki boşluğu küçült */
+        max-width: 100%; /* Ekranın tamamını kullan */
+        padding: 0 10px; /* Yandan biraz boşluk bırak */
+    }
+
+    .timeline-content {
+        padding: 10px 20px; /* Daha küçük iç dolgu */
+        max-width: 100%; /* Tam genişlikte olacak */
+        font-size: 0.9rem; /* Yazı boyutunu küçült */
+        height: auto; /* Yüksekliği dinamik hale getir */
+    }
+
+    /* Footer */
+    .footer {
+        padding: 20px; /* Daha az dolgu */
+    }
+
+    .footer .social a {
+        font-size: 1.2rem; /* Daha küçük simge boyutu */
+        margin: 0 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Daha küçük ekranlar için */
+    .heading {
+        font-size: 1.8rem; /* Başlık boyutunu iyice küçült */
+    }
+
+    .timeline-content {
+        padding: 8px 65px; /* Buton içeriğini küçült */
+        font-size: 0.8rem; /* Yazı boyutunu daha da küçült */
+    }
+
+    .footer .social a {
+        font-size: 1rem; /* Sosyal simgeleri daha küçük yap */
+    }
+}

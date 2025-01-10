@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY LESSONS</title>
+    <link rel="stylesheet" href="index.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header class="header">
+        <a href="home.html" class="logo">
+        <span>Attendify</span></a>
+
+        <i class='bx bx-menu' id="menu-icon"></i>
+
+        <nav class="navbar">
+            <a href="./home.html" > Home</a>
+            <a href="./Login.html" class="active" > Log in</a>
+            <a href="./SignUp.html" > Sign Up</a>
+            <a href="./profile.html" > Profile</a>
+            <a href="./contactUs.html">Contact Us</a>
+        </nav>
+    </header>
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials-box">
+            <h2 class="heading">SELECT A LESSON</h2>
+            <div class="wrapper">
+                <div class="testimonials-item" onclick="window.location.href='./studentattendancelist.html?classId=209'">
+                    <div class="lesson-link">
+                        <h2>SENG 209</h2>
+                        <p>Software Requirements Engineering</p>
+
+                    </div>
+                </div>
+                <div class="testimonials-item" onclick="window.location.href='./studentattendancelist.html?classId=211'">
+                    <div class="lesson-link">
+                        <h2>SENG 211</h2>
+                        <p>Software Project Management</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="social">
+            <a href="https://www.instagram.com/attendifyweb"><i class='bx bxl-instagram' ></i></a>
+            <a href="http://linkedin.com/in/attendify-web-a1458b342"><i class='bx bxl-linkedin-square' ></i></a>
+            <a href="http://www.youtube.com/@AttendifyWeb"><i class='bx bxl-youtube' ></i></a> 
+        </div>
+
+        <ul class="list">
+            <li>
+                <a href="home.html">Home</a>
+            </li>
+            <li>
+                <a href="SignUp.html">Sign Up</a>
+            </li>
+            <li>
+                <a href="Loginpage.html">Log In</a>
+            </li>
+            <li>
+                <a href="profile.html">Profile</a>
+            </li>
+            <li>
+                <a href="contactUs.html">Contact Us</a>
+            </li>
+        </ul>
+        <p class="copyright">
+            @ Attendify | All Rights Reserved
+        </p>
+    </footer>
+</body>
+</html>

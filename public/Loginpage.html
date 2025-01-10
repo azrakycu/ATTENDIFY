@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="index.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header class="header">
+        <a href="home.html" class="logo">
+            <span>Attendify</span>
+        </a>
+        <i class='bx bx-menu' id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="./home.html">Home</a>
+            <a href="./Loginpage.html" class="active">Log in</a>
+            <a href="./SignUp.html">Sign Up</a>
+            <a href="./profile.html">Profile</a>
+            <a href="./contactUs.html">Contact Us</a>
+        </nav>
+    </header>
+
+    <section class="logpage" id="logpage">
+        <div class="LogPage">
+            <!-- Video tam ekran olacak -->
+            <!--video class="background-video" src="images/video.mp4" autoplay muted loop></video-->
+            <!-- Form ortalanmış olacak -->
+            <form id="loginForm">
+                <div class="formgroup">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" required>
+                </div>
+
+                <div class="formgroup">
+                    <label for="password">Password</label>
+                    <input type="text" id="password" name="password" required>
+                </div>
+
+                <div class="btngroup">
+                    <a href="./forgotPassword.html">Forgot your password?</a>
+                </div>
+                
+
+                <div class="btngroup">
+                    
+                    <a href="./SignUp.html">Don't you have an account?</a>
+                    <button type="submit">Log in</button>
+                </div>
+            </form>
+            <!-- Hata mesajı -->
+            <span id="error-message" style="display: none; color: red;"></span>
+        </div>
+    </section>
+
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async function (e) {
+    e.preventDefault(); // Formun varsayılan davranışını engelle
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.style.display = 'none'; // Hata mesajını gizle
+
+    try {
+        const response = await fetch('https://peaceful-forest-90255-fbe04ed90482.herokuapp.com/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+        });
+
+        const result = await response.json();
+
+        if (response.status === 200) {
+            const { token, role } = result;
+
+            localStorage.setItem('authToken', token); // Token'i sakla
+
+            // Kullanıcı rolüne göre yönlendir
+            if (role === 'teacher') {
+                window.location.href = './teacherPage.html';
+            } else if (role === 'student') {
+                window.location.href = './studentPage.html';
+            } else {
+                errorMessage.style.display = 'block';
+                errorMessage.innerText = 'Unknown user role. Please contact support.';
+            }
+        } else {
+            errorMessage.style.display = 'block';
+            errorMessage.innerText = result.message || 'Invalid email or password!';
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        errorMessage.style.display = 'block';
+        errorMessage.innerText = 'Something went wrong. Please try again later.';
+    }
+});
+window.addEventListener('load', () => {
+    const video = document.querySelector('.background-video');
+    video.play(); // Sayfa tamamen yüklendikten sonra videoyu oynat
+});
+
+
+
+
+    </script>
+    <script src="home.js"></script>
+
+    <footer class="footer">
+        <div class="social">
+            <a href="https://www.instagram.com/attendifyweb"><i class='bx bxl-instagram' ></i></a>
+            <a href="http://linkedin.com/in/attendify-web-a1458b342"><i class='bx bxl-linkedin-square' ></i></a>
+            <a href="http://www.youtube.com/@AttendifyWeb"><i class='bx bxl-youtube' ></i></a> 
+        </div>
+
+        <ul class="list">
+            <li>
+                <a href="home.html">Home</a>
+            </li>
+            <li>
+                <a href="SignUp.html">Sign Up</a>
+            </li>
+            <li>
+                <a href="Loginpage.html">Log In</a>
+            </li>
+            <li>
+                <a href="profile.html">Profile</a>
+            </li>
+            <li>
+                <a href="contactUs.html">Contact Us</a>
+            </li>
+        </ul>
+        <p class="copyright">
+            @ Attendify | All Rights Reserved
+        </p>
+    </footer>
+</body>
+</html>

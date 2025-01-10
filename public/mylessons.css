@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border:none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+:root{
+    
+    --bg-colour: black;  
+    --second-bg-colour: black;
+    --text-color: white;
+    --main-color: #ffbefe;
+    
+}
+.heading{
+    font-size: 6rem;
+    text-align: center;
+    margin: 5rem 0;
+
+}
+.testimonials{
+    background: var(--second-bg-colour);
+}
+
+.testimonials-box{
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.testimonials .heading{
+    margin-bottom: 5rem;
+}
+.testimonials-box img{
+    width: 15rem;
+    border-radius: 50%;
+    border: 3px solid var(--main-color);
+    box-shadow: 0 0 25px var(--main-color);
+
+}
+.wrapper{
+    display: grid;
+    grid-template-columns: repeat(2,2fr);
+    gap: 2rem;
+}
+.testimonials-item{
+    min-height:450px ;
+    max-width: 750px;
+    background:rgb(3, 3, 3) ;
+    border: 3px solid rgba(238, 238, 238, 0.2);
+    border-radius: 2rem;
+    margin: 0 2rem;
+    padding:30px 60px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+    color:white;
+    transition: 0.4s ease-in-out;
+}
+.testimonials-item:hover{
+    border:3px solid var(--main-color);
+    transform:translateY(-10px)scale(1.03);
+    box-shadow: 0 0 50px var(--main-color);
+}
+.testimonials-item h2{
+    font-size: 2.8rem;
+}
+.testimonials-item p{
+    font-size: 1.3rem;
+}
+
+.lesson-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; /* Bağlantı alt çizgisini kaldır */
+    color: inherit; /* Metin rengini koru */
+    width: 100%;
+    height: 100%;
+}
+
+.testimonials-item {
+    cursor: pointer; /* Kutunun tamamının tıklanabilir olduğunu göstermek için */
+}
+
+.testimonials-item:hover {
+    border: 3px solid var(--main-color); /* Hover efektini koruyoruz */
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 0 50px var(--main-color);
+}

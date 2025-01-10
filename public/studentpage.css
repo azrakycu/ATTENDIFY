@@ -1,0 +1,236 @@
+/* Global Styles */
+•⁠  ⁠{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --bg-color: black;
+    --secondary-bg-color: black;
+    --text-color: white;
+    --main-color: #ffbefe;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: var(--bg-color);
+}
+header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 0 0 20px #f3a7f1, 0 0 30px #f3a7f1, 0 0 40px #f3a7f1; /* Işıltılı pembe yazı efekti */
+  }
+
+.header .logo span {
+    color: var(--main-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar a {
+    margin: 0 15px;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar a.active,
+.navbar a:hover {
+    color: var(--main-color);
+}
+
+/* Section: Student */
+.heading {
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 2rem 0;
+    padding-top:6rem;
+}
+
+.student {
+    padding: 50px 15px;
+    background: var(--secondary-bg-color);
+    text-align: center;
+}
+
+.timeline-items {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.timeline-items::before {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    background-color: var(--main-color);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    width: 100%;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.timeline-item:nth-child(odd) {
+    text-align: right;
+    padding-right: calc(50% + 30px);
+}
+
+.timeline-item:nth-child(even) {
+    text-align: left;
+    padding-left: calc(50% + 30px);
+}
+
+.timeline-dot {
+    width: 21px;
+    height: 21px;
+    background-color: var(--main-color);
+    box-shadow: 0 0 25px var(--main-color), 0 0 50px var(--main-color);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    top: 10px;
+}
+
+.timeline-content {
+    background-color: var(--bg-color);
+    border: 3px solid var(--main-color);
+    padding: 30px 50px;
+    border-radius: 2rem;
+    box-shadow: 0 0 10px var(--main-color);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.timeline-content:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--main-color);
+}
+
+.timeline-content h3 {
+    color: var(--text-color);
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+/* Footer */
+.footer {
+    padding: 20px 50px;
+    background: var(--bg-color);
+    text-align: center;
+}
+
+.footer .social a {
+    margin: 0 10px;
+    color: var(--main-color);
+    font-size: 1.5rem;
+}
+
+.footer .list li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.footer .list a {
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.footer .list a:hover {
+    color: var(--main-color);
+}
+
+.footer p {
+    color: var(--text-color);
+    margin-top: 10px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--bg-color);
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding-bottom: 4rem; /* Header'dan sonra daha fazla boşluk ekle */
+    }
+
+    .heading {
+        margin-top: 0; /* Varsayılan boşluğu sıfırla */
+        padding-top: 6rem; /* Welcome yazısını daha aşağıya kaydır */
+    }
+    /* Hamburger Menü ve Navbar için düzenleme */
+.navbar {
+    display: flex;
+    align-items: center;
+    display: none; /* Başlangıçta gizli */
+    flex-direction: column;
+    gap: 15px;
+    background-color: var(--bg-color); /* Arka plan rengini ekleyelim */
+    position: absolute;
+    top: 70px;  /* Menü ikonunun altına yerleştiriyoruz */
+    right: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.navbar.active {
+    display: flex; /* Aktif olduğunda menüyü göster */
+}
+
+#menu-icon {
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+/* Mobilde menü açıldığında navbar bağlantıları */
+.navbar a {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin: 10px 0;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    color: var(--main-color);
+    text-decoration: underline;
+}
+
+/* Menü elemanlarının düzeni */
+.navbar a.active {
+    color: var(--main-color);
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--main-color);
+}
+.timeline-content h3 {
+    color: var(--text-color);
+    margin: 0;
+    font-size: 0.5rem;
+}
+}
